@@ -30,7 +30,7 @@ const remove_out_date_files = () => {
       let current_time = new Date().getTime();
       let time_diff = (current_time - new Date(file.split("-", 3).join("-")).getTime()) / 86400000;
       if (time_diff > log_file_expire_limit) {
-        fs.unlink(`${log_file_dir}${file}`, (err) => {
+        fs.unlink(path.resolve(`${log_file_dir}${file}`), (err) => {
           console.log(`${file} deleted`, `error :${err}`);
         });
       }

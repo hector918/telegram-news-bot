@@ -2,23 +2,20 @@ const path = require("path");
 const MTProto = require("@mtproto/core");
 // const { sleep } = require("@mtproto/core/src/utils/common");
 require("dotenv").config();
-
 const api_id = process.env.MTP_ID;
 const api_hash = process.env.MTP_HASH;
-const tempStorage = require("@mtproto/core/src/storage/temp");
-
-console.log(api_id, api_hash)
+//////////////////////////////////////////////////////
 class API {
   constructor() {
     this.mtproto = new MTProto({
       api_id,
       api_hash,
-      storageOptions: {
-        instance: tempStorage
-      }
       // storageOptions: {
-      //   path: path.resolve(__dirname, "./data/1.json")
+      //   instance: require("@mtproto/core/src/storage/temp")
       // }
+      storageOptions: {
+        path: path.resolve(__dirname, "./authKey/key.json")
+      }
     });
   }
 

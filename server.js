@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const main = async () => {
   try {
-    const ret = await mtproto.sendCode("16467159648");
+    const ret = await mtproto.sendCode(process.env.PHONE_NUMBER);
     console.log(ret);
   } catch (error) {
     console.log(error);
